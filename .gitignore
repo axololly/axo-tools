@@ -1,3 +1,4 @@
 axo.py
-setup.py
 *__pycache__*
+axotools.egg-info/
+build/
