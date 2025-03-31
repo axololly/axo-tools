@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools >= 77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "axotools"
+description = "A CLI-esque tool that lets you build projects with raw Python instead of Shell scripts."
+version = "0.1.0"
+requires-python = ">= 3.13"
+authors = [
+  {name = "axololly"}
+]
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.scripts]
+axo = "axotools.cli:handle_cli"

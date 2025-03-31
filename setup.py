@@ -1,11 +1,10 @@
-from axotools import __author__, __version__
 from setuptools import setup
 
 setup(
     name = "axotools",
-    version = __version__,
+    version = '0.1.0',
     description = "Some tools that can run stuff in axo.py files.",
     url = "https://github.com/axololly/axo-tools",
-    author = __author__,
+    author = 'axololly',
     license = "MIT"
 )

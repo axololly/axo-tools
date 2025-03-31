@@ -1,8 +1,9 @@
+from . import cli
 from .builtins import * # noqa
 from .commands import Command, get_lookup
 from .parameters import parse_params
-from .utils import error, silence_sys_exit
 from sys import argv as args
+from .utils import error, silence_sys_exit
 
 def attempt_exec(cmd: Command, params: list[str]):
     test = cmd.test_params
@@ -26,9 +27,11 @@ def attempt_exec(cmd: Command, params: list[str]):
     else:
         error("invalid parameters.")
 
-
 @silence_sys_exit
 def parse():
+    if hasattr(cli.handle_cli, '__used_cli'):
+        return
+    
     if len(args) == 1:
         return attempt_exec(Command.__default__, [])
     
