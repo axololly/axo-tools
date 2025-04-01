@@ -81,6 +81,9 @@ def command(
             rename(**param_aliases)(C)
 
         if default:
+            if hasattr(Command, '__default__'):
+                raise ValueError(f"cannot override the default command {Command.__default__.name!r}.")
+            
             Command.__default__ = C
 
         return C

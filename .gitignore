@@ -2,3 +2,4 @@ axo.py
 *__pycache__*
 axotools.egg-info/
 build/
+*.ps1

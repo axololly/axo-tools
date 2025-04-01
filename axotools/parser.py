@@ -27,15 +27,25 @@ def attempt_exec(cmd: Command, params: list[str]):
     else:
         error("invalid parameters.")
 
+
+def show_help():
+    print("Axo Tools: I don't know what to put here.")
+
+
 @silence_sys_exit
 def parse():
     if hasattr(cli.handle_cli, '__used_cli'):
         return
     
     if len(args) == 1:
-        return attempt_exec(Command.__default__, [])
+        cmd = Command.__dict__.get("__default__", list_commands) # noqa
+        
+        return attempt_exec(cmd, [])
     
     _, name, *params = args
+
+    if name in ["-h", "--help"]:
+        return show_help()
 
     command = get_lookup().get(name)
 
@@ -43,7 +53,10 @@ def parse():
         return error(f"unrecognised command: {name!r}.")
     
     if params and params[0] in ["-h", "--help"]:
+        from .builtins import help
+        
         help.callback(command.name)
+        
         return
 
     attempt_exec(command, params)

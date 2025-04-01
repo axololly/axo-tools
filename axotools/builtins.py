@@ -13,7 +13,7 @@ def help(name: str = 'help'):
     print(command.description)
 
 
-@command(name = "list", aliases = ['l'], default = True)
+@command(name = "list", aliases = ['l'])
 def list_commands():
     "List all the commands in the axo script."
 
